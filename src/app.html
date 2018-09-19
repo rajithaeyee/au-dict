@@ -1,0 +1,43 @@
+<template>
+  <require from="bootstrap/dist/css/bootstrap.min.css"></require>
+  <require from="./styles.css"></require>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand" href="#">
+      <img alt="Brand" src="http://icons.iconarchive.com/icons/hopstarter/book/48/Dictionary-Book-icon.png"> Smart Dictionary</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+  <div class="container">
+    <form submit.trigger="search()">
+      <br/>
+      <div class="row">
+        <div class="col-sm-3">
+          <input type="text" value.bind="searchKey" class="form-control" id="searchText" placeholder="Search Here...">
+
+        </div>
+        <div class="col-sm-3">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+      <br/>
+      <div class="row" if.bind="flag">
+        <div class="jumbotron" style="width:100%;">
+          <h1>${searchKey}</h1>
+          <ul>
+            <li repeat.for="entry of entries">
+              <p>${entry.type}</p>
+              <br/>
+              <p>${entry.definition}
+                <br/>
+              </p>
+              <p>${entry.example}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</template>
